@@ -1,0 +1,27 @@
+.provideItem {
+  background-color: #f8f8fa;
+  padding: 40px 20px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  .icon {
+    font-size: 35px;
+    color: #ff561d;
+    transition: all 0.3s ease;
+  }
+
+  a {
+    color: #ff561d;
+    text-decoration: underline;
+  }
+}
+
+.provideItem:hover {
+  margin-top: -20px;
+}
+
+.provideItem:hover .icon {
+  transform: rotateY(180deg);
+}

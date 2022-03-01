@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika&display=swap");
+$color: #7b68ee;
+
+.about_sec {
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  .about_sec_main {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+
+    .left {
+      h5 {
+        color: rgb(46, 46, 248);
+      }
+
+      h1 {
+        font-family: "Signika", sans-serif;
+        line-height: 50px;
+        letter-spacing: 2px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .progress {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .progres {
+          margin: 15px 0px;
+          p {
+            color: #3917f8;
+            margin-bottom: 2px;
+          }
+        }
+      }
+
+      .learn_more {
+        margin-top: 20px;
+        cursor: pointer;
+        margin-right: 15px;
+        display: inline-block;
+        padding: 0.75rem 1rem;
+        border-radius: 2rem;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        border: none;
+        background: none;
+        color: black;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color;
+          border-radius: 2rem;
+          z-index: -2;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          background-color: darken($color, 15%);
+          transition: all 0.3s;
+          border-radius: 2rem;
+          z-index: -1;
+        }
+        &:hover {
+          color: #fff;
+          &:before {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .right {
+      .right_img {
+        border-radius: 10px;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about_sec {
+    .about_sec_main {
+      display: grid;
+      grid-template-columns: 100%;
+
+      .left {
+        h1 {
+          line-height: 40px;
+          letter-spacing: 1px;
+        }
+        .learn_more {
+          margin-top: 0px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
