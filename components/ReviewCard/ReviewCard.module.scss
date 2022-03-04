@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
+
+.review_card {
+  text-align: center;
+
+  p:first-child {
+    color: #fcc80f;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+    font-family: "Fredoka", sans-serif;
+    padding: 0px 10px 20px;
+  }
+
+  .review_card_img {
+    border-radius: 50%;
+    // background-size: contain;
+    object-fit: cover;
+  }
+
+  h5 {
+    font-weight: 400;
+    color: rgb(92, 90, 90);
+  }
+}

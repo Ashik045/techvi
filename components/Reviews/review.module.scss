@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika&display=swap");
+
+.review_sec {
+  margin-top: 100px;
+  .review_header {
+    text-align: center;
+
+    h5 {
+      color: #fcc80f;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-family: "Signika", sans-serif;
+    }
+  }
+
+  .review_main {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .mySwiper {
+      display: grid;
+      grid-gap: 25px;
+
+      .swiper {
+        padding: 15px;
+        background-color: rgb(252, 252, 252);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

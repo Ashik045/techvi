@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika&display=swap");
+
+.team_sec {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  .team_header {
+    text-align: center;
+    h5 {
+      color: #fcc80f;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-family: "Signika", sans-serif;
+    }
+  }
+
+  .team_header_main {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-content: center;
+    grid-gap: 30px;
+    padding-top: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .team_sec {
+    .team_header_main {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .team_sec {
+    .team_header_main {
+      display: grid;
+      grid-template-columns: 100%;
+    }
+  }
+}

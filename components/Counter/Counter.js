@@ -1,35 +1,52 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import style from './counter.module.scss';
 
-const Counter = () => {
-    // const [counterSec, setCounterSec] = useState(false)
+function Counter() {
+    return (
+        <div className={style.counter_sec}>
+            <div className={style.main_counter}>
+                <VisibilitySensor partialVisibility offset={{ top: 20 }}>
+                    {({ isVisible }) => (
+                        <div className={style.counters}>
+                            <div style={{ height: 100 }} className={style.counter}>
+                                {isVisible ? (
+                                    <CountUp end={27} suffix="+" className={style.counter_header} />
+                                ) : null}
+                                <p>Years Helping Business</p>
+                            </div>
 
-    if(typeof window !== "undefined") {
-        function scrl() {
-            if (window.scrollY > 2500) {
-                console.log('scroll');
-            }
-        }
-        window.addEventListener('scroll', scrl)
-}
-    
+                            <div style={{ height: 100 }} className={style.counter}>
+                                {isVisible ? (
+                                    <CountUp
+                                        end={500}
+                                        suffix="+"
+                                        className={style.counter_header}
+                                    />
+                                ) : null}
+                                <p>Employees</p>
+                            </div>
 
-  return (
-    <div className={style.counter_sec}>
-        <div className={style.main_counter}>
-            <div className={style.counter1}>
-            <CountUp start={0} end={100} delay={0}>
-                {({ countUpRef }) => (
-                    <div>
-                    <span ref={countUpRef} />
-                    </div>
-                )}
-            </CountUp>
+                            <div style={{ height: 100 }} className={style.counter}>
+                                {isVisible ? (
+                                    <CountUp end={20} suffix="M" className={style.counter_header} />
+                                ) : null}
+                                <p>Complete Projects</p>
+                            </div>
+
+                            <div style={{ height: 100 }} className={style.counter}>
+                                {isVisible ? (
+                                    <CountUp end={90} suffix="K" className={style.counter_header} />
+                                ) : null}
+                                <p>5 Star Rating</p>
+                            </div>
+                        </div>
+                    )}
+                </VisibilitySensor>
             </div>
         </div>
-    </div>
-  )
+    );
 }
 
-export default Counter
+export default Counter;

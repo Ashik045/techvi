@@ -1,0 +1,28 @@
+.contact_card {
+  text-align: center;
+  border-top: 3px solid rgb(87, 87, 248);
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  padding: 15px;
+
+  .contact_card_desc {
+    color: rgb(102, 101, 101);
+  }
+
+  .contact_card_phn {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .contact_card_phn:hover {
+    color: rgb(87, 87, 248);
+  }
+
+  p:last-child:hover {
+    transition: all 0.3s ease;
+    color: rgb(87, 87, 248);
+    cursor: pointer;
+  }
+}

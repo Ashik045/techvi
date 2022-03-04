@@ -1,4 +1,62 @@
 .counter_sec {
   margin-top: 50px;
   margin-bottom: 50px;
+
+  .main_counter {
+    background-image: url("../../images/countbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 300px;
+    filter: brightness(80%);
+
+    .counters {
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-template-columns: 20% 20% 20% 20%;
+      grid-gap: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+
+      .counter {
+        color: white;
+        font-weight: bold;
+
+        .counter_header {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .counter_sec {
+    .main_counter {
+      .counters {
+        display: grid;
+        grid-template-columns: 50% 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .counter_sec {
+    .main_counter {
+      height: 400px;
+      overflow-y: hidden;
+
+      .counters {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 40%;
+      }
+    }
+  }
 }

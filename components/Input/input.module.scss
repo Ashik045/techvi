@@ -1,0 +1,23 @@
+.input_div {
+  input {
+    padding: 15px 15px;
+    border: none;
+    border-left: 3px solid rgb(98, 98, 248);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  span {
+    font-size: 13px;
+    color: red;
+    visibility: hidden;
+    padding-top: 5px;
+    margin-bottom: -5px;
+  }
+
+  input:invalid[focused="true"] ~ span {
+    visibility: visible;
+  }
+}

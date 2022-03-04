@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika&display=swap");
+
+.popular_post {
+  display: block;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin-top: 10px;
+
+  .popular_post_left {
+    .popular_post_left_img {
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+  .popular_post_right {
+    padding: 0px 15px;
+
+    small {
+      font-size: 13px;
+      color: rgb(139, 136, 136);
+    }
+    h5 {
+      margin-top: 5px;
+      font-family: "Signika", sans-serif;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    h5:hover {
+      color: rgb(87, 87, 250);
+    }
+  }
+}
