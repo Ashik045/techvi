@@ -1,5 +1,7 @@
+import axios from 'axios';
 import Head from 'next/head';
 import About from '../components/About/About';
+import BlogCom from '../components/BlogCom/BlogCom';
 import Counter from '../components/Counter/Counter';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
@@ -8,7 +10,7 @@ import Review from '../components/Reviews/Review';
 import TeamDetails from '../components/TeamDetails/TeamDetails';
 import WhyUs from '../components/WhyUs/WhyUs';
 
-export default function Home() {
+export default function Home({ BLOG_DATA }) {
     return (
         <div className="container">
             <Head>
@@ -25,8 +27,19 @@ export default function Home() {
                 <Counter />
                 <Review />
                 <TeamDetails />
+                <BlogCom blogDetails={BLOG_DATA} />
                 <Footer />
             </main>
         </div>
     );
+}
+
+export async function getStaticProps() {
+    const res = await axios.get('http://localhost:4000/api/blog');
+    const dataMain = await res.data.message;
+    return {
+        props: {
+            BLOG_DATA: dataMain,
+        },
+    };
 }

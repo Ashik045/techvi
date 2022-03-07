@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable no-undef */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/anchor-is-valid */

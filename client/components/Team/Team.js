@@ -11,6 +11,7 @@ function Team({ detail }) {
                     src={detail.image}
                     alt={detail.name}
                     height={700}
+                    width={600}
                     className={style.team_img}
                 />
                 <div className={style.hide_div}>

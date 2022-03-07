@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-underscore-dangle */
+import axios from 'axios';
 import Image from 'next/image';
 import React from 'react';
 import {
@@ -11,72 +14,39 @@ import {
     FaUserAlt
 } from 'react-icons/fa';
 import PopularPost from '../../components/PopularPost/PopularPost';
-import blogimg4 from '../../images/about2.jpg';
-import blogimg7 from '../../images/blogimg7.jpg';
 import style from '../../styles/blogdetails.module.scss';
 
-const POPULAR_POSTS = [
-    {
-        id: 1,
-        image: blogimg4,
-        date: '20 June 2021',
-        title: 'Announcing Our New Smiles for Success Charity',
-    },
-    {
-        id: 2,
-        image: blogimg4,
-        date: '25 July 2020',
-        title: 'Machine Learning Applications for Every Industry',
-    },
-    {
-        id: 3,
-        image: blogimg4,
-        date: '3 December, 2019',
-        title: 'Internal or outsourced IT: What’s the best choice?',
-    },
-    {
-        id: 4,
-        image: blogimg4,
-        date: '27 June 2021',
-        title: '5 Technology Considerations for Office Relocations',
-    },
-];
-
-function BlogDetails() {
+function BlogDetails({ blog, blogList }) {
     return (
         <div className={style.blog_details}>
             <div className={style.blog_details_main}>
                 <div className={style.blog_left}>
-                    <Image src={blogimg7} alt="detail" />
+                    <Image
+                        className={style.blog_left_img}
+                        src={blog.image}
+                        alt="detail"
+                        height={500}
+                        width={800}
+                    />
                     <div className={style.author1}>
                         <p>
-                            <FaUserAlt /> Ashik
+                            <FaUserAlt /> {blog.author}
                         </p>
                         <p>
-                            <FaCalendarWeek /> 27 July 2021
+                            <FaCalendarWeek /> {new Date(blog.createdAt).toLocaleString()}
                         </p>
                     </div>
 
-                    <h2>5 Technology Considerations for Office Relocations</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi aliquip. Lorem ipsum dolor
-                        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi aliquip. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim.
-                    </p>
+                    <h2>{blog.title}</h2>
+                    <p>{blog.description}</p>
 
                     <div className={style.author2}>
-                        <p>
-                            <b>Tag:</b> Solutions, Guide
-                        </p>
+                        <div>
+                            <b>Tag:</b>
+                            {blog.tags?.map((tag) => (
+                                <small key={tag}> {tag} </small>
+                            ))}
+                        </div>
                         <p>
                             <b>Share:</b> <FaFacebookF className={style.author2_icon} />
                             <FaTwitter className={style.author2_icon} />
@@ -105,14 +75,44 @@ function BlogDetails() {
                     <div className={style.pop_post}>
                         <h4>Popular Posts</h4>
                         <hr />
-                        {POPULAR_POSTS.map((posts) => (
-                            <PopularPost key={posts.id} postDetail={posts} />
+                        {blogList.map((posts) => (
+                            <PopularPost key={posts._id} postDetail={posts} />
                         ))}
                     </div>
                 </div>
             </div>
         </div>
     );
+}
+
+export async function getStaticPaths() {
+    const res = await axios.get(`http://localhost:4000/api/blog`);
+    const datas = await res.data.message;
+    const paths = datas.map((data) => ({
+        params: {
+            blogid: `${data._id}`,
+        },
+    }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+}
+
+export async function getStaticProps(context) {
+    const { params } = context;
+    const res = await axios.get(`http://localhost:4000/api/blog/${params.blogid}`);
+    const res2 = await axios.get(`http://localhost:4000/api/blog`);
+    const data = await res.data.message;
+    const data2 = await res2.data.message.slice(1, 5);
+
+    return {
+        props: {
+            blog: data,
+            blogList: data2,
+        },
+    };
 }
 
 export default BlogDetails;

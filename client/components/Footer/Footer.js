@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @next/next/link-passhref */
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import {
     FaEnvelope,
     FaFacebook,
@@ -10,6 +12,7 @@ import {
     FaPhoneAlt,
     FaTwitter
 } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import FooterCol from '../FooterColumn/FooterCol';
 import style from './footer.module.scss';
 
@@ -48,6 +51,41 @@ const FooterDetailsThree = [
 ];
 
 function Footer() {
+    const [emailVal, setEmailVal] = useState('');
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        padding: '.25rem',
+        timerProgressBar: true,
+        width: '250px',
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    const handleChange = (e) => {
+        setEmailVal(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:4000/api/email', { email: emailVal });
+
+            Toast.fire({
+                icon: 'success',
+                title: `Sign up successfully.`,
+            });
+            setEmailVal('');
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className={style.footer_sec}>
             <div className={style.main_footer}>
@@ -58,12 +96,16 @@ function Footer() {
                     </div>
 
                     <div className={style.news_letter_right}>
-                        <input
-                            className={style.inpp}
-                            type="email"
-                            placeholder="Enter your email.."
-                        />
-                        <input className={style.subb} type="submit" value="Subscribe" />
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                className={style.inpp}
+                                type="email"
+                                placeholder="Enter your email.."
+                                value={emailVal}
+                                onChange={handleChange}
+                            />
+                            <input type="submit" value="Subscribe" />
+                        </form>
                     </div>
                 </div>
                 <hr />

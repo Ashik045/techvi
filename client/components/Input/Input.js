@@ -6,7 +6,7 @@ function Input(props) {
     const [focused, setFocused] = useState(false);
     const { onChange, errorMsg, ...inputProps } = props;
 
-    const handleBlur = (e) => {
+    const handleBlur = () => {
         setFocused(true);
     };
     return (

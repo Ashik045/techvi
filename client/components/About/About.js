@@ -72,6 +72,7 @@ function About() {
                                 alt="none"
                                 src={itImg}
                                 className={style.right_img}
+                                width={700}
                                 height={700}
                             />
                         </div>

@@ -29,7 +29,7 @@ function WhyUs() {
             <div className={style.main_why}>
                 <div className={style.top_sec}>
                     <div className={style.top_left}>
-                        <Image src={topImg} />
+                        <Image src={topImg} alt="whyus" />
                     </div>
                     <div className={style.top_right}>
                         <h5>WHY CHOOSE US?</h5>
@@ -53,7 +53,7 @@ function WhyUs() {
                         <WhyItems whyDetails={whyItemDetails2} />
                     </div>
                     <div className={style.bottom_right}>
-                        <Image src={topImg2} />
+                        <Image src={topImg2} alt="why uss" />
                     </div>
                 </div>
             </div>

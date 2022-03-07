@@ -25,7 +25,7 @@ function Header() {
                                 About Us
                             </a>
                         </button>
-                        <Link href="/contact">
+                        <Link href="/contact" passHref>
                             <button type="button" className={style.header_btn}>
                                 <span className={style.rounded}> Contact Us</span>
                             </button>
