@@ -38,9 +38,14 @@ function Header() {
                 </div>
             </div>
 
-            <div className={style.header_sec}>
-                <Image alt="headd" src={headerImg} />
-            </div>
+            {/* <div className={style.header_sec} style={{ width: '100%' }} /> */}
+            <Image
+                alt="headd"
+                src={headerImg}
+                layout="fill"
+                objectFit="cover"
+                className={style.header_sec_img}
+            />
         </div>
     );
 }

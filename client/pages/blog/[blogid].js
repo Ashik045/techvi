@@ -26,7 +26,7 @@ function BlogDetails({ blog, blogList }) {
                         src={blog.image}
                         alt="detail"
                         height={500}
-                        width={800}
+                        width={1000}
                     />
                     <div className={style.author1}>
                         <p>

@@ -17,9 +17,10 @@ $color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 700px;
+  height: 800px;
   width: 100%;
   position: relative;
+  // overflow-y: hidden;
 
   .main_header {
     padding-top: 200px;
@@ -32,6 +33,7 @@ $color: #fdfdfd;
 
     .left {
       padding: 20px;
+      z-index: 10;
 
       h1 {
         font-size: 45px;
@@ -106,10 +108,9 @@ $color: #fdfdfd;
     }
   }
 
-  .header_sec {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
+  .header_sec_img {
+    margin-bottom: -60px !important;
+    z-index: 2;
   }
 }
 
